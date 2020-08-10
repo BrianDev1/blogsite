@@ -38,9 +38,8 @@ app.get("/posts/:postTitle", function(req,res){
   posts.forEach(function(post){
     const storedPostTitle = lodash.lowerCase(post.title);
     if(storedPostTitle === aTitle){
-      console.log(aTitle);
-
-    }
+      res.render("post", {title: post.title, body: post.body});
+    } 
   })
 
 });
@@ -64,10 +63,13 @@ app.get("/compose", function(req, res){
 });
 
 
+/* Function set */
+function truncateAnyString(aString) {
+  const newStringLength = aString.length * 0.5; //Half the length of original
 
+//   return aString.slice(0, newStringLength) + "...";
 
-
-
+};
 
 
 
